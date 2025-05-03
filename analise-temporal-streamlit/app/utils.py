@@ -53,4 +53,66 @@ def carregar_dados():
     dados['dia_semana'] = dados['data_hora'].dt.day_name()
     dados['horario'] = dados['data_hora'].dt.hour
     
+    # Traduzir dias da semana para português, se necessário
+    mapeamento_dias = {
+        'Monday': 'Segunda',
+        'Tuesday': 'Terça',
+        'Wednesday': 'Quarta',
+        'Thursday': 'Quinta',
+        'Friday': 'Sexta',
+        'Saturday': 'Sábado',
+        'Sunday': 'Domingo'
+    }
+    dados['dia_semana'] = dados['dia_semana'].map(mapeamento_dias)
+    
+    # Classificar ocorrências por período do dia
+    def classificar_periodo(hora):
+        if 5 <= hora < 12:
+            return 'Manhã'
+        elif 12 <= hora < 18:
+            return 'Tarde'
+        elif 18 <= hora < 22:
+            return 'Noite'
+        else:
+            return 'Madrugada'
+    
+    dados['periodo'] = dados['horario'].apply(classificar_periodo)
+    
+    # Calcular métricas importantes que serão usadas no storytelling
+    dados['fim_de_semana'] = dados['dia_semana'].isin(['Sábado', 'Domingo'])
+    
     return dados
+
+def gerar_insights(dados):
+    """
+    Gera insights automáticos a partir dos dados para apoiar a narrativa
+    """
+    insights = {}
+    
+    # Determinar o dia da semana com mais ocorrências
+    contagem_por_dia = dados['dia_semana'].value_counts()
+    insights['dia_pico'] = contagem_por_dia.idxmax()
+    insights['contagem_dia_pico'] = contagem_por_dia.max()
+    
+    # Determinar o horário com mais ocorrências
+    contagem_por_hora = dados['horario'].value_counts()
+    insights['hora_pico'] = contagem_por_hora.idxmax()
+    insights['contagem_hora_pico'] = contagem_por_hora.max()
+    
+    # Comparar dias úteis vs fim de semana
+    ocorrencias_fim_de_semana = dados[dados['fim_de_semana']].shape[0]
+    ocorrencias_dia_util = dados[~dados['fim_de_semana']].shape[0]
+    
+    insights['media_fim_de_semana'] = ocorrencias_fim_de_semana / 2 if ocorrencias_fim_de_semana > 0 else 0
+    insights['media_dia_util'] = ocorrencias_dia_util / 5 if ocorrencias_dia_util > 0 else 0
+    insights['diferenca_percentual'] = ((insights['media_fim_de_semana'] / insights['media_dia_util']) - 1) * 100 if insights['media_dia_util'] > 0 else 0
+    
+    # Tipo mais comum por período
+    por_periodo = {}
+    for periodo in dados['periodo'].unique():
+        tipo_comum = dados[dados['periodo'] == periodo]['tipo'].value_counts().idxmax()
+        por_periodo[periodo] = tipo_comum
+    
+    insights['tipo_por_periodo'] = por_periodo
+    
+    return insights
