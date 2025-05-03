@@ -43,7 +43,7 @@ Acompanhe nossa jornada pelos dados e descubra padrões temporais que podem salv
 """)
 
 # Primeiro capítulo da história: Panorama geral
-st.markdown("## 📆 Capítulo 1: Quando ocorrem mais chamados de emergência?")
+st.markdown("## 📆 Quando ocorrem mais chamados de emergência?")
 
 # KPIs principais - Métricas destacadas
 col1, col2, col3 = st.columns(3)
@@ -67,7 +67,7 @@ gerar_graficos(dados_filtrados)
 
 # Capítulo 2: Períodos do dia e tipos de emergência
 st.markdown("""
-## 🌓 Capítulo 2: Períodos Críticos e Tipos de Emergência
+## 🌓 Períodos Críticos e Tipos de Emergência
 
 Diferentes momentos do dia apresentam desafios únicos para as equipes de emergência.
 Vamos analisar como os tipos de ocorrência se distribuem nos diferentes períodos.
@@ -90,7 +90,7 @@ for periodo, tipo in insights['tipo_por_periodo'].items():
 
 # Capítulo 3: Recomendações e conclusões
 st.markdown("""
-## 💡 Capítulo 3: O Que Podemos Aprender?
+## 💡 O Que Podemos Aprender?
 
 Com base na análise temporal, podemos extrair algumas lições valiosas para otimizar o atendimento de emergência:
 """)
@@ -112,9 +112,9 @@ try:
     if 'data' in dados.columns and pd.api.types.is_datetime64_any_dtype(dados['data']):
         data_atualizacao = dados['data'].max().strftime('%d/%m/%Y')
     else:
-        data_atualizacao = "Janeiro/2024"  # Data padrão caso não consiga extrair
+        data_atualizacao = "Dezembro/2024"  # Data padrão caso não consiga extrair
     st.markdown(f"Dados atualizados até: {data_atualizacao}")
 except Exception as e:
-    st.markdown("Dados de Janeiro/2024")
+    st.markdown("Dados de Dezembro/2024")
     
-st.markdown("📧 Para mais informações, entre em contato com a equipe de análise de dados")
+st.markdown("📧✨ Ficou com dúvida? Chama o Cassio Santos 🤠 ou a Sara Lopes 🌟!")

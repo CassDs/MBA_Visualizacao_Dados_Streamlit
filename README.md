@@ -66,7 +66,7 @@ A ideia é fornecer **subsídios visuais e analíticos** para otimizar o tempo-r
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/analise-temporal-streamlit.git
+git clone https://github.com/CassDs/MBA_Visualizacao_Dados_Streamlit.git
 cd analise-temporal-streamlit
 ```
 
@@ -97,4 +97,4 @@ MIT License
 
 ---
 
-> Desenvolvido por **SENHORES** **EXCELENTÍSSIMOS** Cássio Santos e Sara Lopes como parte do Desafio "Data Storytelling - Visualização de Dados".
+> Desenvolvido por Cássio Santos e Sara Lopes como parte do Desafio "Data Storytelling - Visualização de Dados".
