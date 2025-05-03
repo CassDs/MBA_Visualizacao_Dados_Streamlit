@@ -24,16 +24,13 @@ A ideia é fornecer **subsídios visuais e analíticos** para otimizar o tempo-r
 
 ```
 📁 analise-temporal-streamlit/
-├── 📂 data/
-│   └── ocorrencias2024.csv         # Conjunto de dados bruto
-│
 ├── 📂 app/
 │   └── streamlit_app.py            # Aplicação principal com Streamlit
 │   └── graficos.py                 # Módulo com funções gráficas
 │   └── utils.py                    # Funções auxiliares
 │
-├── 📂 assets/
-│   └── imagens, ícones e banners
+├── 📂 data/
+│   └── ocorrencias2024.csv         # Conjunto de dados bruto
 │
 ├── 📂 reports/
 │   └── storytelling.md             # Roteiro da narrativa e insights
@@ -55,7 +52,7 @@ A ideia é fornecer **subsídios visuais e analíticos** para otimizar o tempo-r
 
 ## 📊 Tecnologias Utilizadas
 
-- `Python 3.10+`
+- `Python 3`
 - `Pandas`, `NumPy`
 - `Matplotlib`, `Seaborn`, `Plotly`
 - `Streamlit` (visualização interativa)
