@@ -39,11 +39,11 @@ st.markdown("""
 Vamos explorar como as emergências médicas em Pernambuco se distribuem ao longo do tempo.
 Esta análise pode ajudar gestores públicos a otimizar recursos e melhorar o tempo de resposta.
 
-Tempo é vida: como os padrões temporais das emergências podem guiar políticas públicas eficientes!
+**Tempo é vida**: como os padrões temporais das emergências podem guiar políticas públicas eficientes!
 """)
 
 # Primeiro capítulo da história: Panorama geral
-st.markdown("## 📆 Quando ocorrem mais chamados de emergência?")
+st.markdown("## 📆 Quando a cidade mais precisa de *socorro*?")
 
 # KPIs principais - Métricas destacadas
 col1, col2, col3 = st.columns(3)
